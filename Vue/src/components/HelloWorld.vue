@@ -1,18 +1,29 @@
 <template>
-  <div class="hello">
-    <welcome/>
+  <div>
+    <Logo/>
+    <div class="greeting">
+      <p v-if="showGreeting">{{greeting}}</p>
+      <button v-on:click="toggleGreeting">Click me!</button>
+    </div>
   </div>
 </template>
 
 <script>
-  import Welcome from "@/components/Welcome";
+  import Logo from "@/components/Logo";
 
   export default {
-    components: {Welcome},
     name: 'HelloWorld',
+    components: {Logo},
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        greeting: "Hello and Welcome!",
+        showGreeting: false
+      }
+    },
+    methods: {
+      toggleGreeting() {
+        this.showGreeting = !this.showGreeting;
       }
     }
   }
